@@ -12,8 +12,8 @@ setTimeout(() => {
 anime({
   targets: "#main-container",
   opacity: 1,
-  duration: 1800,
-  delay: 4000,
+  duration: 2500,
+  delay: 3000,
   zIndex: 1,
 });
 
