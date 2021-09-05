@@ -302,6 +302,7 @@ header p:hover:after {
     border: 2px solid #cb9b51;
     border-radius: 15px;
     display: flex;
+    opacity: 0;
     justify-content: center;
     align-items: center;
     width: 6vh;
@@ -311,7 +312,7 @@ header p:hover:after {
     /* border: 3px solid #fff; */
     z-index: 20;
     position: fixed;
-    right: 20vw;
+    right: 10vw;
     top: 1vh;
   }
 
@@ -358,6 +359,10 @@ header p:hover:after {
   }
   .navigacija {
     display: none;
+  }
+
+  .tekst {
+    padding: 10%;
   }
 }
 
