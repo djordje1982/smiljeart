@@ -3,7 +3,7 @@ anime({
   opacity: 0,
   easing: "easeInOutQuad",
   duration: 1800,
-  delay: 4000,
+  delay: 4500,
   zIndex: -5,
 });
 setTimeout(() => {
