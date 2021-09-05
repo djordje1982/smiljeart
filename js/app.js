@@ -1,23 +1,31 @@
-window.onload = (event) => {
-  anime({
-    targets: "#loader",
-    opacity: 0,
-    easing: "easeInOutQuad",
-    duration: 1800,
-    delay: 4000,
-    zIndex: -5,
-  });
-  setTimeout(() => {
-    document.getElementById("main-container").style.display = "block";
-  }, 4000);
-  anime({
-    targets: "#main-container",
-    opacity: 1,
-    duration: 1800,
-    delay: 4000,
-    zIndex: 1,
-  });
-};
+anime({
+  targets: "#loader",
+  opacity: 0,
+  easing: "easeInOutQuad",
+  duration: 1800,
+  delay: 4000,
+  zIndex: -5,
+});
+setTimeout(() => {
+  document.getElementById("main-container").style.display = "block";
+}, 4000);
+anime({
+  targets: "#main-container",
+  opacity: 1,
+  duration: 1800,
+  delay: 4000,
+  zIndex: 1,
+});
+
+/**** LIGHTBOX */
+lightbox.option({
+  wrapAround: true,
+  alwaysShowNavOnTouchDevices: true,
+  albumLabel: "Slika %1 of %2",
+  resizeDuration: 500,
+});
+
+/************ */
 
 const slike = document.querySelector(".slide1");
 const ikone = document.querySelector(".slide2");
@@ -64,7 +72,7 @@ setInterval(() => {
 
 const strelica = document.getElementById("dole-str");
 strelica.addEventListener("click", () => {
-  document.querySelector(".tekst").scrollIntoView({
+  document.querySelector("#dole-str").scrollIntoView({
     behavior: "smooth",
   });
 });
@@ -278,7 +286,7 @@ function otvoriIkone() {
   ikoneW.scrollIntoView({
     behavior: "smooth",
   });
-  let animacija0 = anime({
+  anime({
     targets: ikoneW,
     opacity: 1,
     zIndex: 2,
@@ -366,4 +374,85 @@ slikeSLideBtn.addEventListener("click", () => {
 
 ikoneSLideBtn.addEventListener("click", () => {
   otvoriIkone();
+});
+
+const logoBtn1 = document.getElementById("logobtn1");
+const logoBtn2 = document.getElementById("logobtn2");
+const logoBtn3 = document.getElementById("logobtn3");
+
+logoBtn1.addEventListener("click", () => {
+  otvoriHome();
+});
+
+logoBtn2.addEventListener("click", () => {
+  otvoriHome();
+});
+
+logoBtn3.addEventListener("click", () => {
+  otvoriHome();
+});
+
+/********HEADER *******/
+
+const meni = document.getElementById("burger-oko");
+const menu = document.getElementById("menu");
+meni.addEventListener("click", () => {
+  meni.classList.toggle("open");
+  if (meni.classList.contains("open")) {
+    menu.style.display = "block";
+    anime({
+      targets: menu,
+      right: 0,
+      easing: "easeInOutQuad",
+      duration: 750,
+    });
+  } else {
+    const animation = anime({
+      targets: menu,
+      right: "-80vw",
+      easing: "easeInOutQuad",
+      duration: 750,
+    });
+    animation.finished.then(function () {
+      menu.style.display = "none";
+    });
+  }
+});
+document.addEventListener("click", (e) => {
+  console.log(e.target);
+});
+
+const menuHome1 = document.getElementById("menuHome1");
+const menuSlike1 = document.getElementById("menuSlike1");
+const menuIkone1 = document.getElementById("menuIkone1");
+
+menuHome1.addEventListener("click", () => {
+  otvoriHome();
+  anime({
+    targets: menu,
+    right: "-80vw",
+    easing: "easeInOutQuad",
+    duration: 750,
+  });
+  meni.classList.remove("open");
+});
+menuSlike1.addEventListener("click", () => {
+  otvoriSlike();
+  anime({
+    targets: menu,
+    right: "-80vw",
+    easing: "easeInOutQuad",
+    duration: 750,
+  });
+  meni.classList.remove("open");
+});
+menuIkone1.addEventListener("click", () => {
+  otvoriIkone();
+  anime({
+    targets: menu,
+    right: "-80vw",
+    easing: "easeInOutQuad",
+    duration: 750,
+  });
+  meni.classList.remove("open");
 });

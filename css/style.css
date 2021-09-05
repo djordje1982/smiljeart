@@ -99,7 +99,8 @@ body {
 #Layer_1 {
   stroke: #f7931e;
   stroke-miterlimit: 10;
-  animation: animFill 3s ease alternate infinite;
+  animation: animFill 2s ease alternate infinite;
+  height: 80%;
 }
 
 @keyframes animFill {
@@ -196,6 +197,7 @@ body {
   text-align: justify;
   font-style: italic;
   font-size: 1.5rem;
+  text-indent: 30px;
 }
 
 .tekst p:last-of-type {
@@ -204,14 +206,22 @@ body {
 
 #dole-str {
   position: absolute;
-  top: 60%;
+  bottom: 2rem;
   left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-  cursor: pointer;
+  transform: translateX(-50%);
   width: 80px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+  height: 80px;
+  cursor: pointer;
+  animation: strelicaAnim 2s ease alternate infinite;
+}
+
+@keyframes strelicaAnim {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #dole-str:hover {
@@ -221,7 +231,7 @@ body {
 .donja-slika {
   width: 100%;
   position: relative;
-  height: 40vh;
+  height: 60vh;
   background-image: url(../images/img-main.jpg);
   background-attachment: fixed;
   background-position: top;
@@ -241,10 +251,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 5;
 }
 
 .logo {
-  width: 24%;
+  height: 8vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navigacija {
@@ -262,13 +277,121 @@ header {
   text-transform: uppercase;
 }
 
+#burger-oko {
+  display: none;
+}
+
+header p:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  background-color: #cb9b51;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+header p:hover:after {
+  width: 100%;
+  opacity: 1;
+}
+
+@media screen and (max-width: 960px) {
+  #burger-oko {
+    border: 2px solid #cb9b51;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6vh;
+    height: 6vh;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    /* border: 3px solid #fff; */
+    z-index: 20;
+    position: fixed;
+    right: 20vw;
+    top: 1vh;
+  }
+
+  .burger {
+    width: 3.5vh;
+    height: 2px;
+    background: #cb9b51;
+    border-radius: 5px;
+    line-height: 1;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .burger::before,
+  .burger::after {
+    content: "";
+    position: absolute;
+    width: 3.5vh;
+    height: 2px;
+    background: #cb9b51;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .burger::before {
+    transform: translateY(-10px);
+  }
+
+  .burger::after {
+    transform: translateY(10px);
+  }
+
+  #burger-oko.open .burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #burger-oko.open .burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+
+  #burger-oko.open .burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+  .navigacija {
+    display: none;
+  }
+}
+
+#menu {
+  height: 92vh;
+  width: 80vw;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10;
+  position: fixed;
+  top: 8vh;
+  right: -80vw;
+  border-bottom-left-radius: 10px;
+}
+
+.menu-sub {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menu-sub p {
+  color: #cb9b51;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/**** ********/
 @media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 50%;
-  }
-  .logo {
+  /* .logo {
     width: 15%;
-  }
+  } */
 }
 
 @media screen and (max-width: 768px) {
@@ -276,9 +399,9 @@ header {
     overflow-x: hidden;
   }
 
-  .logo {
+  /* .logo {
     width: 25%;
-  }
+  } */
   .nav-links {
     position: absolute;
     right: 0;
@@ -336,7 +459,7 @@ footer {
   background-color: rgba(0, 0, 0, 1);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
@@ -390,6 +513,7 @@ footer a {
   );
   color: transparent;
   background-clip: text;
+  letter-spacing: 2px;
 }
 
 /* ------------- GALLERY -------------- */
@@ -400,7 +524,7 @@ footer a {
   min-height: 50vh;
   max-width: 100rem;
   margin: 0 auto;
-  background: #282c35;
+  background: #0f0f0f;
   padding: 3rem;
   border-radius: 15px;
   box-shadow: 0 0 30px rgba(228, 183, 183, 0.25);
@@ -466,3 +590,9 @@ footer a {
     fill: f7931e;
   }
 } */
+
+@media screen and (max-width: 1000px) {
+  header {
+    padding: 0 15%;
+  }
+}
