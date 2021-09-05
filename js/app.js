@@ -1,4 +1,4 @@
-anime({
+const anim0 = anime({
   targets: "#loader",
   opacity: 0,
   easing: "easeInOutQuad",
@@ -6,15 +6,22 @@ anime({
   delay: 4500,
   zIndex: -5,
 });
+
 setTimeout(() => {
   document.getElementById("main-container").style.display = "block";
-}, 4000);
+}, 4300);
 anime({
   targets: "#main-container",
   opacity: 1,
   duration: 2500,
-  delay: 4300,
+  delay: 4000,
   zIndex: 1,
+});
+anime({
+  targets: "#burger-oko",
+  opacity: 1,
+  duration: 2500,
+  delay: 4000,
 });
 
 /**** LIGHTBOX */
@@ -417,9 +424,6 @@ meni.addEventListener("click", () => {
       menu.style.display = "none";
     });
   }
-});
-document.addEventListener("click", (e) => {
-  console.log(e.target);
 });
 
 const menuHome1 = document.getElementById("menuHome1");
